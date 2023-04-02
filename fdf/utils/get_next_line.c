@@ -6,7 +6,7 @@
 /*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:37:44 by yhachami          #+#    #+#             */
-/*   Updated: 2022/11/24 22:43:08 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:03:02 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ char	*read_line(int fd, char **next)
 
 char	*get_next_line(int fd)
 {
-	static char	*next;
+	static char	*next[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!next)
-		next = (char *) ft_calloc(1, 1);
-	next = read_line(fd, &next);
-	line = get_line(next);
-	next = save_next(next);
+	if (!next[fd])
+		next[fd] = (char *) ft_calloc(1, 1);
+	next[fd] = read_line(fd, &next[fd]);
+	line = get_line(next[fd]);
+	next[fd] = save_next(next[fd]);
 	return (line);
 }

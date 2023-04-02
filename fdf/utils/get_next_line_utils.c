@@ -6,7 +6,7 @@
 /*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:56:37 by yhachami          #+#    #+#             */
-/*   Updated: 2022/11/24 22:43:32 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:03:12 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	get_nl(char *s)
 	return (i + 1);
 }
 
-int	ft_strlen(char *s)
-{
-	int	l;
+// int	ft_strlen(char *s)
+// {
+// 	int	l;
 
-	l = 0;
-	while (s[l])
-		l++;
-	return (l);
-}
+// 	l = 0;
+// 	while (s[l])
+// 		l++;
+// 	return (l);
+// }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
