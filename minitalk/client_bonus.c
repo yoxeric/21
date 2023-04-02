@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhachami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 00:56:28 by yhachami          #+#    #+#             */
-/*   Updated: 2023/03/20 00:12:00 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/03/19 08:29:14 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,22 @@ void	send_character(pid_t server_pid, unsigned char c)
 	free(binary);
 }
 
+void	handler(int sig)
+{
+	if (sig == SIGUSR1)
+		ft_printf("client : message received\n");
+}
+
 int	main(int argc, char **argv)
 {
-	pid_t	server_pid;
-	int		i;
+	struct sigaction	sig_act;
+	pid_t				server_pid;
+	int					i;
 
+	sig_act.sa_handler = &handler;
+	sig_act.sa_flags = SA_RESTART;
+	if (sigaction(SIGUSR1, &sig_act, NULL) < 0)
+		ft_printf("failed to assign handler");
 	if (argc == 3)
 	{
 		server_pid = ft_atoi(argv[1]);
@@ -59,9 +70,8 @@ int	main(int argc, char **argv)
 			ft_printf("given pid is no possible");
 			exit(1);
 		}
-		ft_printf("client : sending message\n");
 		i = -1;
-		while (argv[2][++i])
+		while (++i <= ft_strlen(argv[2]))
 			send_character(server_pid, argv[2][i]);
 	}
 	else
