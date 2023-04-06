@@ -6,13 +6,13 @@
 /*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 19:59:55 by yhachami          #+#    #+#             */
-/*   Updated: 2022/10/11 04:06:06 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:22:59 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int				i;
 	int				sign;
@@ -35,7 +35,8 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
+	res = sign * res;
 	if (res > 2147483647 || res < -2147483648)
-		ft_exit(-1);
-	return (sign * res);
+		ft_exit(str);
+	return (res);
 }

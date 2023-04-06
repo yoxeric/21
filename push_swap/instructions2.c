@@ -14,8 +14,9 @@
 
 void	double_swap(t_stack *stack_a, t_stack *stack_b)
 {
-	swap(stack_a, "ra\n");
-	swap(stack_b, "rb\n");
+	swap(stack_a, NULL);
+	swap(stack_b, NULL);
+	ft_printf("ss\n");
 }
 
 void	double_rotate(t_stack *stack_a, t_stack *stack_b)

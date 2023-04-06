@@ -6,7 +6,7 @@
 /*   By: yhachami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 22:45:21 by yhachami          #+#    #+#             */
-/*   Updated: 2023/03/28 22:45:37 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/04/02 11:52:35 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	has_nbs(char *s)
 		if (s[x] >= '0' && s[x] <= '9')
 			has_nb = 1;
 	if (has_nb == 0)
-		ft_exit(-1);
+		ft_exit(NULL);
 }
 
 int	count_nbrs(char **nb_st)
@@ -36,16 +36,16 @@ int	count_nbrs(char **nb_st)
 	n = 0;
 	while (nb_st[++i])
 	{
-		if (!(nb_st[i][1] >= '0' && nb_st[i][1] <= '9')
-			&& (nb_st[i][0] == '-' || nb_st[i][0] == '+') )
-			ft_exit(-1);
+		if ((nb_st[i][0] == '-' || nb_st[i][0] == '+')
+			&& !(nb_st[i][1] >= '0' && nb_st[i][1] <= '9'))
+			ft_double_exit(nb_st);
 		if (!(nb_st[i][0] >= '0' && nb_st[i][0] <= '9')
 			&& nb_st[i][0] != '-' && nb_st[i][0] != '+')
-			ft_exit(-1);
+			ft_double_exit(nb_st);
 		j = 0;
 		while (nb_st[i][++j])
 			if (!(nb_st[i][j] >= '0' && nb_st[i][j] <= '9'))
-				ft_exit(-1);
+				ft_double_exit(nb_st);
 		n++;
 	}
 	return (n);
@@ -58,17 +58,21 @@ int	*convert_nbrs(char **str, int size)
 	int	y;
 
 	nbs = (int *) malloc(size * sizeof(int));
-	x = size;
-	while (--x >= 0)
-		nbs[x] = ft_atoi(str[x]);
+	y = size;
 	x = -1;
-	while (nbs[++x])
+	while (++x < size)
+		nbs[--y] = ft_atoi(str[x]);
+	if (size > 1)
 	{
-		y = x;
-		while (nbs[++y])
+		x = -1;
+		while (nbs[++x])
 		{
-			if (nbs[x] == nbs[y])
-				ft_exit(-2);
+			y = -1;
+			while (nbs[++y])
+			{
+				if (x != y && nbs[x] == nbs[y])
+					ft_double_exit(str);
+			}
 		}
 	}
 	return (nbs);
@@ -96,16 +100,16 @@ int	*get_stack(char **av, t_stack *stack_a, t_stack *stack_b)
 	while (av[++i])
 		has_nbs(av[i]);
 	nb_st = ft_split(&av[1], ' ');
-	// i = -1;
-	// while(nb_st[++i])
-	// 	printf("split[%d] = %s.\n", i, nb_st[i]);
-	// printf("\n");
 	stack_a->size = count_nbrs(nb_st);
 	stack_b->size = stack_a->size;
 	stack_a->top = stack_a->size - 1;
 	stack_b->top = -1;
 	stack_a->items = convert_nbrs(nb_st, stack_a->size);
-	nbrs = convert_nbrs(nb_st, stack_a->size);
 	stack_b->items = fill_stack(stack_b->size);
+	nbrs = convert_nbrs(nb_st, stack_a->size);
+	i = -1;
+	while (++i < stack_a->size)
+		free(nb_st[i]);
+	free(nb_st);
 	return (nbrs);
 }
