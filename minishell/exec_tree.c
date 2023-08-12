@@ -124,10 +124,10 @@ int	exec_tree(t_tree *tree, t_token *tokens, char **env)
 //              0  |  
 //             / \
 //            /   \
-//      ls   1     3  < file1
-//                  \
-//                   \
-//                    2  grep
+//  < file1  1     3  ls   
+//            \
+//             \
+//              2  grep
 //   
 
 //		
@@ -142,18 +142,18 @@ int	exec_tree(t_tree *tree, t_token *tokens, char **env)
 //    < file2   4
 //               \
 //                \
-//      grep a     1 
+//        grep a   1 
 //
 
 //
 // ls | grep c | grep o
 //
-//              0 
+//              0   |
 //             / \
 //            /   \
-//           1     2
+//          1      2   |
 //                / \
 //               /   \
-//              3     4   ls
+//     grep c   3     4   ls
 //
 */
