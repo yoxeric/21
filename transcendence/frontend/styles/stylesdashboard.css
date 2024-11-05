@@ -1,0 +1,179 @@
+.main-container{
+  width: 99.9vw;
+  height: 92.9vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  gap: 10%;
+  margin-bottom: 20em;
+}
+.elements{
+  background-image: url('../img/output.png');
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap : 8%;
+  animation: fadeIn 0.8s ease ;
+}
+
+  /* Header styling */
+  .header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+  }
+  
+  .username {
+    margin-left: auto;
+    margin-top: auto;
+    font-size: 2em;
+    color: #484852;
+    font-weight: bold;
+	z-index: 1;
+  }
+  
+  /* Content styling */
+  .content {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Space between buttons */
+  }
+
+  .abtn{
+    background-color: #560df5;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    border: none;
+  }
+  .ebtn{
+    background-color: #560df5;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    border: none;
+    /* position: absolute; Use absolute positioning */
+    /* top: 10px; Distance from the top */
+    /* right: 40em; */
+  }
+
+  select {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+option {
+    background-color: black;
+    color: white;
+}
+
+/* Change color when hovering over the select dropdown */
+select:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Styling for the placeholder option */
+option[value=""] {
+    color: grey;
+}
+
+  /* Button styling */
+  .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	  z-index: 1;
+  }
+  
+  .btn:hover {
+    background-color: #878787;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .ebtn:hover {
+    background-color: hsl(0, 0%, 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .abtn:hover {
+    background-color: #ffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .main-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+    }
+    .abtn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+    }
+    .ebtn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+    }
+  }
+  
+.word
+{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 35px;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.player-info {
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-left: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 35px;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
