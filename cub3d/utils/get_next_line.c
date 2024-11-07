@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:37:44 by yhachami          #+#    #+#             */
-/*   Updated: 2023/02/13 20:03:02 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/09/01 23:23:31 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
 char	*save_next(char *old)
 {

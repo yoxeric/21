@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 02:13:11 by yhachami          #+#    #+#             */
-/*   Updated: 2023/02/15 23:02:12 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/09/01 23:22:54 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
 static int	count_digits(int nb)
 {

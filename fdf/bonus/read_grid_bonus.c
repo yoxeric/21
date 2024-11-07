@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_grid.c                                        :+:      :+:    :+:   */
+/*   read_grid_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhachami <yhachami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:47:55 by yhachami          #+#    #+#             */
-/*   Updated: 2023/02/28 21:43:47 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/03/05 00:16:55 by yhachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
+#include"fdf_bonus.h"
 
 void	fill_line(t_vars *vars, int x, int y)
 {
@@ -84,11 +84,9 @@ void	get_grid_len(t_vars *vars, int fd)
 		i = -1;
 		s.x = 0;
 		while (line[++i])
-		{
 			if (((line[i] >= '0' && line[i] <= '9') || line[i] == '-')
 				&& (i == 0 || line[i - 1] == ' '))
 				s.x++;
-		}
 		if (vars->grid_size.x < s.x)
 			vars->grid_size.x = s.x;
 		free(line);
@@ -121,4 +119,6 @@ void	read_grid(t_vars *vars, char *map)
 	f = open(map, O_RDONLY);
 	forge_grid(vars, f);
 	close(f);
+	init_grid(vars);
+	render_ui_text(vars);
 }

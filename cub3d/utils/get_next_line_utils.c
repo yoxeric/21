@@ -6,11 +6,11 @@
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:56:37 by yhachami          #+#    #+#             */
-/*   Updated: 2023/08/23 10:54:59 by azaghlou         ###   ########.fr       */
+/*   Updated: 2023/09/01 23:23:34 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
 int	get_nl(char *s)
 {

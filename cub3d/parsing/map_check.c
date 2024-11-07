@@ -6,7 +6,7 @@
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 23:42:42 by azaghlou          #+#    #+#             */
-/*   Updated: 2023/09/01 19:06:45 by yhachami         ###   ########.fr       */
+/*   Updated: 2023/09/05 00:09:39 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ char	**map_to_ar(int fd)
 	while (1)
 	{
 		i = 0;
+		if (line == NULL)
+			return (free_arr(map), NULL);
 		while (line[i] && (space_tabe(line[i]) || line[i] == '\n'))
 			i++;
 		if (line[i])
 			break ;
 		free(line);
 		line = get_next_line(fd);
-		if (line == NULL)
-			return (NULL);
 	}
 	map = arrjoin(map, line, i++);
 	while (line)
@@ -47,11 +47,11 @@ int	check_around_a_char(char **map, int j, int i, char c)
 {
 	if (map[j][i] == c)
 	{
-		if (i > ft_strlen(map[j - 1]) || map[j - 1][i] == ' ' || map[j
-			- 1][i] == '\n')
+		if ((j == 0 || i > ft_strlen(map[j - 1])) || 
+			map[j - 1][i] == ' ' || map[j - 1][i] == '\n')
 			return (1);
-		if (i > ft_strlen(map[j + 1]) || map[j + 1][i] == ' ' || map[j
-			+ 1][i] == '\n')
+		if ((!map[j + 1] || i > ft_strlen(map[j + 1])) || 
+			map[j + 1][i] == ' ' || map[j + 1][i] == '\n')
 			return (1);
 		if (i == 0 || map[j][i - 1] == ' ' || map[j][i - 1] == '\n')
 			return (1);
@@ -121,16 +121,16 @@ int	map_check(int fd, t_game *game)
 		return (1);
 	game->map.map = map;
 	if (check_line(map[++j]))
-		return (free_arr(map), 1);
+		return (free_arr(map), 2);
 	while (map[++j])
 	{
 		if (loop_on_map(map, game, j, &x))
-			return (free_arr(map), 1);
+			return (free_arr(map), 3);
 	}
 	if (check_line(map[j - 1]))
-		return (free_arr(map), 1);
+		return (free_arr(map), 4);
 	if (x != 1)
-		return (free_arr(map), 1);
+		return (free_arr(map), 5);
 	game->map.size.y = j;
 	game->map.size.x = tallest_line_length(map);
 	return (0);
